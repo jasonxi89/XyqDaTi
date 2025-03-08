@@ -1,0 +1,349 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Microsoft YaHei", sans-serif;
+    background-color: #f6f6f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.start-section,
+.screen-share-section,
+.capture-section {
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    color: #4a6fa5;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #4a6fa5;
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #375d8a;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+button.active {
+    background-color: #375d8a;
+    font-weight: bold;
+}
+
+#startButton,
+#shareScreenButton {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+input[type="file"] {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.hint {
+    color: #777;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.video-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto 20px;
+    border: 2px solid #eee;
+    overflow: hidden;
+    cursor: crosshair;
+}
+
+#sharedScreen {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.selection-box {
+    position: absolute;
+    border: 2px dashed red !important;
+    background-color: rgba(255, 0, 0, 0.1) !important;
+    pointer-events: none;
+    z-index: 15;
+}
+
+.highlight-box {
+    position: absolute;
+    border: 3px solid red;
+    background-color: rgba(255, 0, 0, 0.1);
+    cursor: grab;
+    z-index: 20;
+}
+
+.highlight-box:hover {
+    border: 3px solid #ff3333;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+}
+
+.highlight-box:active {
+    cursor: grabbing;
+}
+
+.quiz-box {
+    position: absolute;
+    border: 4px solid red !important;
+    background-color: rgba(255, 0, 0, 0.05);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.instruction {
+    color: #4a6fa5;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.control-panel {
+    margin: 15px 0;
+}
+
+.answer-info {
+    background-color: #f0f5ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+#questionText,
+#answerText {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+#stopSharingButton {
+    background-color: #d9534f;
+}
+
+#stopSharingButton:hover {
+    background-color: #c9302c;
+}
+
+#captureButton {
+    background-color: #5cb85c;
+}
+
+#captureButton:hover {
+    background-color: #449d44;
+}
+
+#newQuestionButton {
+    margin-top: 20px;
+}
+
+.ocr-loading {
+    display: inline-block;
+    position: relative;
+    color: #4a6fa5;
+    font-weight: bold;
+}
+
+.ocr-loading:after {
+    content: ".";
+    animation: ocr-dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes ocr-dots {
+    0%, 20% { content: "."; }
+    40% { content: ".."; }
+    60% { content: "..."; }
+    80% { content: "...."; }
+    100% { content: "....."; }
+}
+
+.ocr-debug {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.ocr-debug h4 {
+    margin-top: 0;
+    color: #4a6fa5;
+    font-size: 16px;
+}
+
+.ocr-raw-text {
+    font-family: monospace;
+    white-space: pre-wrap;
+    font-size: 12px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    max-height: 150px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.ocr-canvas {
+    max-width: 100%;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    display: block;
+}
+
+.ocr-result {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.ocr-result h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #4a6fa5;
+    font-size: 14px;
+}
+
+.ocr-result pre {
+    margin: 0;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    font-family: monospace;
+    font-size: 12px;
+    border-radius: 3px;
+    white-space: pre-wrap;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.version {
+    font-size: 14px;
+    color: #4a6fa5;
+    background-color: #f0f5ff;
+    padding: 3px 8px;
+    border-radius: 12px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.processing-details {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-size: 12px;
+    font-family: monospace;
+    color: #495057;
+}
+
+.processing-details p {
+    margin: 4px 0;
+}
+
+.ml-status {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.ml-indicator {
+    display: flex;
+    align-items: center;
+}
+
+.ml-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #28a745; /* 绿色表示连接正常 */
+    margin-right: 8px;
+    animation: pulse 2s infinite;
+}
+
+.ml-status-text {
+    font-size: 14px;
+    color: #495057;
+}
+
+.ml-offline .ml-dot {
+    background-color: #dc3545; /* 红色表示离线 */
+    animation: none;
+}
+
+.ml-processing .ml-dot {
+    background-color: #ffc107; /* 黄色表示处理中 */
+    animation: blink 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(40, 167, 69, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+    }
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+} 

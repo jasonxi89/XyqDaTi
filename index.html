@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梦幻西游答题助手</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 不直接引入Tesseract.js，改为动态判断和加载 -->
+</head>
+<body>
+    <div class="container">
+        <h1>梦幻西游答题助手 <span class="version">3.0 OCR版</span></h1>
+        
+        <div class="start-section" id="startSection">
+            <h2>开始使用</h2>
+            <p>这是一个梦幻西游自动答题辅助工具，可以帮助您识别游戏中的答题内容并给出正确答案。</p>
+            <div class="features">
+                <div class="feature">
+                    <h3>实时捕获</h3>
+                    <p>直接共享游戏窗口，无需截图上传</p>
+                </div>
+                <div class="feature">
+                    <h3>OCR识别</h3>
+                    <p>使用OCR.space API精确识别题目内容</p>
+                </div>
+                <div class="feature">
+                    <h3>准确答案</h3>
+                    <p>快速匹配大型题库，给出精准答案</p>
+                </div>
+            </div>
+            <button id="startButton" class="primary-button">开始答题</button>
+        </div>
+        
+        <div class="screen-share-section hidden" id="screenShareSection">
+            <h2>选择游戏窗口</h2>
+            <p>请点击下方按钮选择要分享的梦幻西游游戏窗口。请确保游戏窗口已经打开并且可见。</p>
+            <button id="shareScreenButton" class="primary-button">分享游戏窗口</button>
+        </div>
+        
+        <div class="capture-section hidden" id="captureSection">
+            <h2>实时答题</h2>
+            <div class="video-container">
+                <video id="sharedScreen" autoplay></video>
+                <div id="selectionBox" class="selection-box hidden"></div>
+                <div id="highlightBox" class="highlight-box hidden"></div>
+                <div id="quizBox" class="quiz-box hidden"></div>
+            </div>
+            <div class="control-panel">
+                <button id="selectAreaButton" class="active">框选答题区域</button>
+                <button id="captureButton" disabled>识别当前问题</button>
+                <button id="stopSharingButton">停止分享</button>
+            </div>
+            <div class="answer-info">
+                <h3>识别结果</h3>
+                <p class="instruction" id="selectionInstruction">请在视频上拖动鼠标框选答题窗口区域</p>
+                <p id="questionText">问题: 等待识别...</p>
+                <p id="answerText">正确答案: 等待识别...</p>
+                <p class="hint">识别后可以直接拖动红色框调整位置，使其精确对准答案选项</p>
+                <div id="ml-status" class="ml-status">
+                    <div class="ml-indicator">
+                        <span class="ml-dot"></span>
+                        <span class="ml-status-text">OCR服务: 准备就绪</span>
+                    </div>
+                </div>
+                <div id="debug-info">
+                    <p id="status-message"></p>
+                    <div id="ocr-result" class="ocr-result hidden">
+                        <h4>OCR识别原文</h4>
+                        <pre id="raw-text"></pre>
+                        <div id="processing-details" class="processing-details">
+                            <p>服务器处理时间: <span id="processing-time">0</span>ms</p>
+                            <p>客户端总时间: <span id="client-time">0</span>ms</p>
+                            <p>网络传输时间: <span id="network-time">0</span>ms</p>
+                            <p>置信度: <span id="confidence-level">0%</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
